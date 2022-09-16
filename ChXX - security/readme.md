@@ -1,0 +1,2 @@
+- https://www.thoughtworks.com/insights/blog/architecture/authentication-sidecar-a-new-experience-in-microservice-architecture-part-two
+- https://fdk.codes/securing-kubernetes-apps-with-keycloak-and-gatekeeper/
