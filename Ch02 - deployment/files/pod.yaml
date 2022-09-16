@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: hello
+  name: hello
+  namespace: k8s-tutorial
+spec:
+  containers:
+  - image: paulbouwer/hello-kubernetes:1.10
+    name: hello
+    ports:
+      - containerPort: 8080
+  imagePullSecrets:
+  - name: regcred
