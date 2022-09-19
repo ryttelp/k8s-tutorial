@@ -4,10 +4,10 @@ metadata:
   labels:
     run: hello
   name: hello
-  namespace: k8s-tutorial
+  namespace: sandbox-p-ryttel
 spec:
   containers:
-  - image: paulbouwer/hello-kubernetes:1.10
+  - image: paulbouwer/hello-kubernetes:1
     name: hello
     ports:
       - containerPort: 8080
