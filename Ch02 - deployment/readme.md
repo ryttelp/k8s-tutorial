@@ -36,5 +36,17 @@ k expose pod hello --type NodePort
 
 ```
 # Prosty deployment
+```
+# wdrozenie 
+k apply -f deployment.yaml
+# skalowanie
+k scale deployment --replicas=2 hello
+# utworzenie serwisu
+k expose deployment hello --name hellod
+# utworzenie serwisu NodePort
+k expose deployment hello --name hellod --type NodePort
+# test
+curl http://node-1:32722 | grep "<td>hello-"
+```
 # Statefulset (PVki)
 # Rolling deployments

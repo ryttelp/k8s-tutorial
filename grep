@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello Kubernetes!</title>
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300" >
+</head>
+<body>
+
+  <div class="main">
+    <img src="/images/kubernetes.png"/>
+    <div class="content">
+      <div id="message">
+  Hello world!
+</div>
+<div id="info">
+  <table>
+    <tr>
+      <th>namespace:</th>
+      <td>k8s-tutorial</td>
+    </tr>
+    <tr>
+      <th>pod:</th>
+      <td>hello-5fc9f645c4-f46hr</td>
+    </tr>
+    <tr>
+      <th>node:</th>
+      <td>node-2 (Linux 5.11.0-49-generic)</td>
+    </tr>
+  </table>
+</div>
+<div id="footer">
+  paulbouwer/hello-kubernetes:1.10 (linux/amd64)
+</div>
+    </div>
+  </div>
+
+</body>
+</html>

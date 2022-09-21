@@ -4,7 +4,6 @@ metadata:
   labels:
     run: hello
   name: hello
-  namespace: sandbox-p-ryttel
 spec:
   containers:
   - image: paulbouwer/hello-kubernetes:1
