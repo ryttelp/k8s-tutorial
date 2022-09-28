@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: nginx
+spec:
+  selector:
+    matchLabels:
+      app: nginx-app
+  serviceName: nginx-svc
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nginx-app
+    spec:
+      serviceAccountName: runasroot
+      securityContext:
+        runAsUser: 0      
+      containers:
+      - name: nginx-app
+        image: k8s.gcr.io/nginx-slim:0.8
+        ports:
+        - containerPort: 8999
+          name: web
+        volumeMounts:
+        - name: www
+          mountPath: /usr/share/nginx/html        
+        # - name: cache
+        #   mountPath: /var/cache
+  volumeClaimTemplates:
+  - metadata:
+      name: www
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi
+  # - metadata:
+  #     name: cache
+  #   spec:
+  #     accessModes: [ "ReadWriteOnce" ]
+  #     resources:
+  #       requests:
+  #         storage: 1Gi

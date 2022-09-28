@@ -5,7 +5,8 @@ k create ns k8s-tutorial
 # Zmiana namespace   
 kubectl config set-context --current --namespace=k8s-tutorial
 
-kubectl create secret docker-registry regcred --docker-server=https://index.docker.io/v1/ --docker-username=ryttelp --docker-password=xxxxxxx --docker-email=pawel.ryttel@gmail.com
+kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=ryttelp  --docker-email=pawel.ryttel@gmail.com --docker-password=xxxxxxx
+oc secrets link default regcred --for=pull
 ```
 # Jeden pod
 ```
@@ -21,6 +22,7 @@ k delete pod hello
 
 # tworzymy pullsecret
 kubectl create secret docker-registry regcred --docker-server=https://index.docker.io/v1/ --docker-username=ryttelp --docker-password=xxxxxxx --docker-email=pawel.ryttel@gmail.com
+oc secrets link default regcred --for=pull
 # albo tak
 k apply -f secret.yaml 
 # tworzymy jeszcze raz poda
@@ -49,4 +51,33 @@ k expose deployment hello --name hellod --type NodePort
 curl http://node-1:32722 | grep "<td>hello-"
 ```
 # Statefulset (PVki)
-# Rolling deployments
+```
+# wdrożenie statefull set
+k get pv
+k apply -f statefulset-1.yaml
+# nie działa - why?
+k describe statefulset nginx
+k get pv
+k get pvc
+# ?
+k logs www-nginx-0
+# uooo
+# no to może dodać volume do cache
+k apply -f statefulset-2.yaml
+# eee. no nie
+k logs www-nginx-0
+# dodajemy securityContext
+k apply -f statefulset-3.yaml
+# f...k
+# trzeba wyłączyć zabezpieczenie OSH
+oc create sa runasanyuid 
+oc adm policy add-scc-to-user anyuid -z default
+
+```
+# Labels
+```
+oc run hello2 --image=paulbouwer/hello-kubernetes:1.10 --dry-run=client -o yaml | vi -
+oc get pods -l app=hello
+```
+# Resource Quota
+# PodAffinity

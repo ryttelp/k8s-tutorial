@@ -9,6 +9,6 @@ spec:
   - image: paulbouwer/hello-kubernetes:1
     name: hello
     ports:
-      - containerPort: 8080
+      - containerPort: 80
   imagePullSecrets:
   - name: regcred
