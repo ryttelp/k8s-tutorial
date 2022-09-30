@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-roll
+spec:
+  selector:
+    matchLabels:
+      app: hello-roll
+  template:
+    metadata:
+      labels:
+        app: hello-roll
+    spec:
+      containers:
+      - name: hello-roll
+        image: paulbouwer/hello-kubernetes:1.5
+        resources:
+          limits:
+            memory: "15Mi"
+            cpu: "50m"
+        ports:
+        - containerPort: 8080
