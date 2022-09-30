@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello
+  name: hello2
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: hello
@@ -13,7 +13,7 @@ spec:
         app: hello
     spec:
       containers:
-      - image: paulbouwer/hello-kubernetes:1
+      - image: paulbouwer/hello-kubernetes:1.5
         name: hello
         env:
           - name: KUBERNETES_NAMESPACE
