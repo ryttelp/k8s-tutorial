@@ -80,4 +80,5 @@ oc run hello2 --image=paulbouwer/hello-kubernetes:1.10 --dry-run=client -o yaml 
 oc get pods -l app=hello
 ```
 # Resource Quota
+
 # PodAffinity
