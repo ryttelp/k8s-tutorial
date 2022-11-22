@@ -1,0 +1,24 @@
+{{- $fullName := include "owasp.fullname" . -}}
+{{- $grp := .Chart.Name -}}
+{{- $image := print .Values.image.repository ":" .Values.image.tag -}}
+{{- $port := .Values.service.port -}}
+{{- range .Values.names}}
+apiVersion: v1
+kind: Pod
+metadata:
+  name: {{ . }}-{{ $fullName }}
+  labels:
+    app: {{ . }}-{{ $fullName }}
+    grp: {{ $grp }}
+spec:
+  containers:
+    - name: {{ . }}-{{ $fullName }}
+      image: {{ $image }}
+      ports:
+        - name: http
+          containerPort: {{ $port }}
+          protocol: TCP
+
+---
+{{- end}}
+

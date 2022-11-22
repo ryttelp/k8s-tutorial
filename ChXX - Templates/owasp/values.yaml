@@ -1,0 +1,32 @@
+# Default values for owasp.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+
+image:
+  repository: nexus01.centrala.kaczmarski.pl:8082/docker.io/bkimminich/juice-shop
+  tag: latest
+  pullPolicy: IfNotPresent
+
+nameOverride: ""
+fullnameOverride: "juiceshop"
+ 
+names:
+  - pawel
+  - szymek
+  - rafal
+
+
+service:
+  port: 80
+  targetPort: 3000
+
+
+resources: 
+ limits:
+  cpu: 100m
+  memory: 128Mi
+ requests:
+    cpu: 100m
+    memory: 128Mi
+

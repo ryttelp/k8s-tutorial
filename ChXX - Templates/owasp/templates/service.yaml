@@ -1,0 +1,18 @@
+{{- $fullName := include "owasp.fullname" . -}}
+{{- $port := .Values.service.port -}}
+{{- $targetPort := .Values.service.targetPort -}}
+{{- range .Values.names}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: srv-{{ . }}-{{ $fullName }}
+spec:
+  selector:
+    app: {{ . }}-{{ $fullName }}
+  ports:
+    - protocol: TCP
+      port: {{ $port }}
+      targetPort: {{ $targetPort }}
+
+---
+{{- end}}

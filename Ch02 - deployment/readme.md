@@ -49,6 +49,9 @@ k expose deployment hello --name hellod
 k expose deployment hello --name hellod --type NodePort
 # test
 curl http://node-1:32722 | grep "<td>hello-"
+
+# replace
+oc replace -f pod.yaml --force
 ```
 # Statefulset (PVki)
 ```

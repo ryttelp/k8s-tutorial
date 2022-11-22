@@ -1,0 +1,20 @@
+{{- $fullName := include "owasp.fullname" . -}}
+{{- $targetPort := .Values.service.targetPort -}}
+{{- range .Values.names}}
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: {{ . }}-{{ $fullName }}
+  annotations:
+    openshift.io/host.generated: 'true'
+spec:
+  to:
+    kind: Service
+    name: srv-{{ . }}-{{ $fullName }}
+    weight: 100
+  port:
+    targetPort: {{ $targetPort }}
+  wildcardPolicy: None
+
+---
+{{- end}}
