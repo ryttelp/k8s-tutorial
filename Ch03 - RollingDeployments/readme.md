@@ -3,6 +3,8 @@ oc create cm index --from-file=index.html
 oc apply -f nginx.yaml
 
 # Rolling updates
+// https://docs.openshift.com/container-platform/4.11/applications/deployments/deployment-strategies.html
+
 oc apply -f rolling-deploy.yaml
 oc scale deploy hello-roll --replicas=4
 oc get po -l app=hello-roll
