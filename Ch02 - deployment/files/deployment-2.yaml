@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello2
+  name: hello-dep
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: hello
+      app: hello-dep
   template:
     metadata:
       labels:
-        app: hello
+        app: hello-dep
     spec:
       containers:
-      - image: paulbouwer/hello-kubernetes:1.5
+      - image: nexus01.centrala.kaczmarski.pl:8082/docker.io/paulbouwer/hello-kubernetes:1.10
         name: hello
         env:
           - name: KUBERNETES_NAMESPACE

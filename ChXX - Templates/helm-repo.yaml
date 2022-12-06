@@ -1,0 +1,12 @@
+apiVersion: helm.openshift.io/v1beta1
+kind: ProjectHelmChartRepository
+metadata:
+  name: owasp
+spec:
+  url: https://github.com/ryttelp/helm
+
+  # optional name that might be used by console
+  name: OWASP
+
+  connectionConfig:
+    url: https://github.com/ryttelp/helm

@@ -6,7 +6,7 @@ metadata:
   name: hello
 spec:
   containers:
-  - image: paulbouwer/hello-kubernetes:1
+  - image: paulbouwer/hello-kubernetes:1.10
     name: hello
     ports:
       - containerPort: 8080
