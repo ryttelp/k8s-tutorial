@@ -35,7 +35,9 @@ curl http://localhost:30444
 #pod na porcie node'a
 k expose pod hello --type NodePort  
 
-
+#l2
+oc run --help
+oc run -it busybox --rm --image=nexus01.centrala.kaczmarski.pl:8082/docker.io/busybox --restart=Never
 ```
 # Prosty deployment
 ```
