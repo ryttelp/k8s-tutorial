@@ -63,3 +63,8 @@ https://github.com/paulbouwer/hello-kubernetes
 # Zadanie - kubernetes dashboard
 https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
 kubectl -n kubernetes-dashboard get secret $(kubectl -n kubernetes-dashboard get sa/admin-user -o jsonpath="{.secrets[0].name}") -o go-template="{{.data.token | base64decode}}"H
+
+# Performance
+- https://containersolutions.github.io/runbooks/posts/kubernetes/0-nodes-available-insufficient/
+
+https://github.com/nekop/openshift-sandbox/blob/master/docs/command-cheatsheet.md
