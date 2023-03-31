@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: nginx-app
-        image: k8s.gcr.io/nginx-slim:0.8
+        image: nexus01.centrala.kaczmarski.pl:8082/docker.io/nginx:latest
         ports:
         - containerPort: 80
           name: web
@@ -29,8 +29,8 @@ spec:
     spec:
       accessModes:
         - ReadWriteOnce
-#      storageClassName: development
-#      volumeMode: Filesystem
+      storageClassName: development
+      volumeMode: Filesystem
       resources:
         requests:
           storage: 1Gi

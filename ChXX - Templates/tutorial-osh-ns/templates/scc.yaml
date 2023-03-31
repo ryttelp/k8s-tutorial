@@ -1,0 +1,6 @@
+{{- $fullName := include "tutor-osh.fullname" . -}}
+{{- range .Values.names}}
+  - kind: ServiceAccount
+    name: default
+    namespace: {{ $fullName }}-{{ . | replace "." "-" }}
+{{- end}}

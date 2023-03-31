@@ -6,15 +6,15 @@ spec:
   containers:
   - name: nginx
     image: nexus01.centrala.kaczmarski.pl:8082/docker.io/nginx:latest
-    resources:
-      limits:
-        memory: "128Mi"
-        cpu: "500m"
     ports:
       - containerPort: 80
     volumeMounts:
       - mountPath: /usr/share/nginx/html/
         name: index
+    securityContext:
+      runAsUser: 0
+      capabilities:
+        add: ["SETGID"]        
   volumes:
     - name: index
       configMap: 

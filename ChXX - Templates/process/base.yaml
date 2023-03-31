@@ -1,0 +1,56 @@
+kind: Template
+apiVersion: template.openshift.io/v1
+metadata:
+  name: base-nginx
+objects:
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    name: ${NAME}
+    labels:
+      app: app-${NAME}
+  spec:
+    serviceAccountName: runasanyuid
+    securityContext:
+        runAsUser: 0      
+    containers:
+    - name: nginx
+      image: nexus01.centrala.kaczmarski.pl:8082/docker.io/nginx:latest
+      ports:
+        - containerPort: 80
+      volumeMounts:
+        - mountPath: /usr/share/nginx/html/
+          name: index
+    volumes:
+      - name: index
+        configMap: 
+          name: index-${NAME}
+- apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    name: index-${NAME}
+  data:
+    index.html: |
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+          <meta charset="UTF-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>${TITLE}</title>
+      </head>
+      <body>
+          <h1>${VERSION}</h1>
+      </body>
+      </html>
+
+parameters:
+  - name: NAME
+    displayName: Nazwa
+    value: my-pod
+  - name: TITLE
+    displayName: Tytuł strony
+    value: Index from Template
+  - name: VERSION
+    displayName: Wersja
+    value: v1.1

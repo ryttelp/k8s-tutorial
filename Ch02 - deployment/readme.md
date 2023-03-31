@@ -8,6 +8,9 @@ kubectl config set-context --current --namespace=k8s-tutorial
 kubectl create secret docker-registry regcred --docker-server=docker.io --docker-username=ryttelp  --docker-email=pawel.ryttel@gmail.com --docker-password=xxxxxxx
 oc secrets link default regcred --for=pull
 ```
+Polecenia oc
+https://docs.openshift.com/container-platform/4.7/cli_reference/openshift_cli/developer-cli-commands.html
+
 # Jeden pod
 ```
 # Tworzymy poda z cli
@@ -56,7 +59,9 @@ curl http://node-1:32722 | grep "<td>hello-"
 oc replace -f pod.yaml --force
 ```
 # Statefulset (PVki)
-```
+``` https://livebook.manning.com/book/kubernetes-in-action-second-edition/chapter-7/v-6/13 - montowanie wolumenów
+``` Shareowanie emptydir - https://livebook.manning.com/book/kubernetes-in-action-second-edition/chapter-7/v-6/124
+
 # wdrożenie statefull set
 k get pv
 k apply -f statefulset-1.yaml

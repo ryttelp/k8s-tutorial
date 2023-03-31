@@ -1,0 +1,10 @@
+{{- $fullName := include "tutor-osh.fullname" . -}}
+{{- range .Values.names}}
+apiVersion: v1
+kind: Namespace
+metadata:
+  creationTimestamp: null
+  name: {{ $fullName }}-{{ . | replace "." "-" }}
+spec: {}
+---
+{{- end}}
